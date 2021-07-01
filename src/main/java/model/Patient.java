@@ -13,6 +13,7 @@ public class Patient extends Person {
     private LocalDate dateOfBirth;
     private String careLevel;
     private String roomnumber;
+    private String anwesenheit;
     private List<Treatment> allTreatments = new ArrayList<Treatment>();
 
     /**
@@ -23,11 +24,12 @@ public class Patient extends Person {
      * @param careLevel
      * @param roomnumber
      */
-    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber) {
+    public Patient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String anwesenheit) {
         super(firstName, surname);
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
+        this.anwesenheit = anwesenheit;
     }
 
     /**
@@ -38,13 +40,15 @@ public class Patient extends Person {
      * @param dateOfBirth
      * @param careLevel
      * @param roomnumber
+     * @param anwesenheit
      */
-    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber) {
+    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String anwesenheit) {
         super(firstName, surname);
         this.pid = pid;
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
+        this.anwesenheit = anwesenheit;
     }
 
     /**
@@ -117,6 +121,14 @@ public class Patient extends Person {
         return false;
     }
 
+    public String getAnwesenheit() {
+        return anwesenheit;
+    }
+
+    public void setAnwesenheit(String anwesenheit) {
+        this.anwesenheit = anwesenheit;
+    }
+
     /**
      *
      * @return string-representation of the patient
@@ -128,6 +140,7 @@ public class Patient extends Person {
                 "\nBirthday: " + this.dateOfBirth +
                 "\nCarelevel: " + this.careLevel +
                 "\nRoomnumber: " + this.roomnumber +
+                "\nRoomnumber: " + this.anwesenheit +
                 "\n";
     }
 }
