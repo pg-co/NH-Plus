@@ -11,26 +11,29 @@ public class Treatment {
     private LocalTime begin;
     private LocalTime end;
     private String description;
+    private String caregiver;
     private String remarks;
 
     public Treatment(long pid, LocalDate date, LocalTime begin,
-                     LocalTime end, String description, String remarks) {
+                     LocalTime end, String description, String caregiver, String remarks) {
         this.pid = pid;
         this.date = date;
         this.begin = begin;
         this.end = end;
         this.description = description;
         this.remarks = remarks;
+        this.caregiver = caregiver;
     }
 
     public Treatment(long tid, long pid, LocalDate date, LocalTime begin,
-                     LocalTime end, String description, String remarks) {
+                     LocalTime end, String description, String caregiver, String remarks) {
         this.tid = tid;
         this.pid = pid;
         this.date = date;
         this.begin = begin;
         this.end = end;
         this.description = description;
+        this.caregiver = caregiver;
         this.remarks = remarks;
     }
 
@@ -85,6 +88,14 @@ public class Treatment {
         this.remarks = remarks;
     }
 
+    public String getCaregiver() {
+        return caregiver;
+    }
+
+    public void setCaregiver(String caregiver) {
+        this.caregiver = caregiver;
+    }
+
     public String toString() {
         return "\nBehandlung" + "\nTID: " + this.tid +
                 "\nPID: " + this.pid +
@@ -92,6 +103,8 @@ public class Treatment {
                 "\nBegin: " + this.begin +
                 "\nEnd: " + this.end +
                 "\nDescription: " + this.description +
-                "\nRemarks: " + this.remarks + "\n";
+                "\nCaregiver: " + this.caregiver+
+                "\nRemarks: " + this.remarks +
+                "\n";
     }
 }

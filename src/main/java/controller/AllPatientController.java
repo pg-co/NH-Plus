@@ -35,7 +35,7 @@ public class AllPatientController {
     @FXML
     private TableColumn<Patient, String> colRoom;
     @FXML
-    private TableColumn<Patient, String> colAssets;
+    private TableColumn<Patient, String> colAnwesenheit;
 
     @FXML
     Button btnDelete;
@@ -52,7 +52,7 @@ public class AllPatientController {
     @FXML
     TextField txtRoom;
     @FXML
-    private TextField txtAssets;
+    TextField txtAnwesenheit;
 
     private ObservableList<Patient> tableviewContent = FXCollections.observableArrayList();
     private PatientDAO dao;
@@ -82,8 +82,9 @@ public class AllPatientController {
         this.colRoom.setCellValueFactory(new PropertyValueFactory<Patient, String>("roomnumber"));
         this.colRoom.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colAssets.setCellValueFactory(new PropertyValueFactory<Patient, String>("assets"));
-        this.colAssets.setCellFactory(TextFieldTableCell.forTableColumn());
+        this.colAnwesenheit.setCellValueFactory(new PropertyValueFactory<Patient, String>("anwesenheit"));
+        this.colAnwesenheit.setCellFactory(TextFieldTableCell.forTableColumn());
+
 
         //Anzeigen der Daten
         this.tableView.setItems(this.tableviewContent);
@@ -140,12 +141,12 @@ public class AllPatientController {
     }
 
     /**
-     * handles new asset value
+     * handles new anwensenheit value
      * @param event event including the value that a user entered into the cell
      */
     @FXML
-    public void handleOnEditAssets(TableColumn.CellEditEvent<Patient, String> event){
-        event.getRowValue().setAssets(event.getNewValue());
+    public void handleOnEditAnwesenheit(TableColumn.CellEditEvent<Patient, String> event){
+        event.getRowValue().setRoomnumber(event.getNewValue());
         doUpdate(event);
     }
 
@@ -205,9 +206,9 @@ public class AllPatientController {
         LocalDate date = DateConverter.convertStringToLocalDate(birthday);
         String carelevel = this.txtCarelevel.getText();
         String room = this.txtRoom.getText();
-        String assets = this.txtAssets.getText();
+        String anwesenheit = this.txtAnwesenheit.getText();
         try {
-            Patient p = new Patient(firstname, surname, date, carelevel, room, assets);
+            Patient p = new Patient(firstname, surname, date, carelevel, room, anwesenheit);
             dao.create(p);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -225,6 +226,6 @@ public class AllPatientController {
         this.txtBirthday.clear();
         this.txtCarelevel.clear();
         this.txtRoom.clear();
-        this.txtAssets.clear();
+        this.txtAnwesenheit.clear();
     }
 }

@@ -24,6 +24,8 @@ public class TreatmentController {
     @FXML
     private TextField txtDescription;
     @FXML
+    private TextField txtCaregiver;
+    @FXML
     private TextArea taRemarks;
     @FXML
     private DatePicker datepicker;
@@ -58,6 +60,7 @@ public class TreatmentController {
         this.txtBegin.setText(this.treatment.getBegin());
         this.txtEnd.setText(this.treatment.getEnd());
         this.txtDescription.setText(this.treatment.getDescription());
+        this.txtCaregiver.setText(this.treatment.getCaregiver());
         this.taRemarks.setText(this.treatment.getRemarks());
     }
 
@@ -67,6 +70,7 @@ public class TreatmentController {
         this.treatment.setBegin(txtBegin.getText());
         this.treatment.setEnd(txtEnd.getText());
         this.treatment.setDescription(txtDescription.getText());
+        this.treatment.setCaregiver(txtCaregiver.getText());
         this.treatment.setRemarks(taRemarks.getText());
         doUpdate();
         controller.readAllAndShowInTableView();
