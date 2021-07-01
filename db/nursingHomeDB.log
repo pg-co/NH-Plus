@@ -1,7 +1,4 @@
-/*C2*/SET SCHEMA PUBLIC
-DELETE FROM TREATMENT WHERE TID=8
-INSERT INTO TREATMENT VALUES(8,1,'2020-06-08','15:00','16:00','Spaziergang','Parkspaziergang; Patient ist heute lebhafter und hat klare Momente; erz\u00e4hlt von seiner Tochter','test')
+/*C3*/SET SCHEMA PUBLIC
+INSERT INTO TREATMENT VALUES(20,3,'2021-07-22','07:30','08:30','test','testtes','test')
 COMMIT
-DELETE FROM TREATMENT WHERE TID=12
-INSERT INTO TREATMENT VALUES(12,11,'2020-06-08','15:00','15:30','Physiotherapiekm','\u00dcbungen zur Stabilisation und Mobilisierung der R\u00fcckenmuskulatur','caregiver')
-COMMIT
+DISCONNECT
