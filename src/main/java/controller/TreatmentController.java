@@ -82,6 +82,7 @@ public class TreatmentController {
         try {
             dao.update(treatment);
         } catch (SQLException e) {
+            System.out.println("in jhere!");
             e.printStackTrace();
         }
     }

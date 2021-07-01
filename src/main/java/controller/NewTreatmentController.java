@@ -59,7 +59,7 @@ public class NewTreatmentController {
         String caregiver = txtCaregiver.getText();
         String remarks = taRemarks.getText();
         Treatment treatment = new Treatment(patient.getPid(), date,
-                begin, end, description, remarks, caregiver);
+                begin, end, description, caregiver, remarks);
         createTreatment(treatment);
         controller.readAllAndShowInTableView();
         stage.close();
