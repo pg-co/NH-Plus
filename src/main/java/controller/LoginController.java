@@ -4,14 +4,9 @@ import datastorage.DAOFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
-import model.Patient;
-import utils.DateConverter;
-
-import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class LoginController {
     @FXML
@@ -19,7 +14,9 @@ public class LoginController {
     @FXML
     TextField txtUsername;
     @FXML
-    TextField txtPassword;
+    PasswordField txtPassword;
+    @FXML
+    Label lblAccess;
 
     private LoginController controller;
     private Stage stage;
@@ -33,5 +30,26 @@ public class LoginController {
     public void handleShowLogin(){
         String username = this.txtUsername.getText();
         String password = this.txtPassword.getText();
+
+        // check if input fields are filled
+        if(!username.equals("") && !password.equals("")) {
+            // check if inputs equal with test user data
+            if(username.equals("Testuser") && password.equals("test")) {
+                handleLogin();
+            }
+            // print text message if wrong input data
+            else {
+                this.lblAccess.setText("Anmeldung fehlgeschlagen! Versuchen Sie es erneut.");
+            }
+        }
+        else {
+            // print text message if empty input fields
+            this.lblAccess.setText("Alle Felder müssen ausgefüllt sein!");
+        }
+    }
+
+    private void handleLogin() {
+        // print text message if login success
+        this.lblAccess.setText("Erfolgreich angemeldet!");
     }
 }
