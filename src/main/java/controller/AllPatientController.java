@@ -216,10 +216,6 @@ public class AllPatientController {
         readAllAndShowInTableView();
         clearTextfields();
     }
-
-    /**
-     * removes content from all textfields
-     */
     private void clearTextfields() {
         this.txtFirstname.clear();
         this.txtSurname.clear();
@@ -228,4 +224,8 @@ public class AllPatientController {
         this.txtRoom.clear();
         this.txtAnwesenheit.clear();
     }
+    /**
+     * removes content from all textfields
+     */
+
 }
