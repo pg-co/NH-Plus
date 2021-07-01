@@ -52,7 +52,7 @@ public class AllTreatmentController {
     private Main main;
 
     public void initialize() {
-        readAllAndShowInTableView();
+        readAllAndShowInTableView("init");
         comboBox.setItems(myComboBoxData);
         comboBox.getSelectionModel().select(0);
         this.main = main;
@@ -68,7 +68,22 @@ public class AllTreatmentController {
         createComboBoxData();
     }
 
-    public void readAllAndShowInTableView() {
+    public void readAllAndShowInTableView(String mode) {
+        comboBox.getSelectionModel().select(0);
+        this.dao = DAOFactory.getDAOFactory().createTreatmentDAO();
+        List<Treatment> allTreatments;
+        try {
+            this.tableviewContent.clear();
+            allTreatments = dao.readAll();
+            for (Treatment treatment : allTreatments) {
+                this.tableviewContent.add(treatment);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTableView(){
         this.tableviewContent.clear();
         comboBox.getSelectionModel().select(0);
         this.dao = DAOFactory.getDAOFactory().createTreatmentDAO();
@@ -150,6 +165,7 @@ public class AllTreatmentController {
     @FXML
     public void handleNewTreatment() {
         try{
+            this.tableviewContent.clear();
             String p = this.comboBox.getSelectionModel().getSelectedItem();
             Patient patient = searchInList(p);
             newTreatmentWindow(patient);
