@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
 
 import java.io.*;
 
@@ -24,29 +23,18 @@ public class LoginController {
     }
 
     public void handleShowLogin() throws IOException {
-        // check if usersession file is empty
-        BufferedReader br = new BufferedReader(new FileReader("src/main/usersession.txt"));
-        if(br.readLine() != null) {
-            handleLogout();
-        }
-        else {
-            String username = this.txtUsername.getText();
-            String password = this.txtPassword.getText();
+        String username = this.txtUsername.getText();
+        String password = this.txtPassword.getText();
 
-            // check if input fields are filled
-            if(!username.equals("") && !password.equals("")) {
-                // check if inputs equal with test user data
-                if(username.equals("Testuser") && password.equals("test")) {
-                    handleLogin();
-                }
-                // print text message if wrong input data
-                else {
-                    this.lblAccess.setText("Anmeldung fehlgeschlagen! Versuchen Sie es erneut.");
-                }
+        // check if input fields are filled
+        if(!username.equals("") && !password.equals("")) {
+            // check if inputs equal with test user data
+            if(username.equals("Testuser") && password.equals("test")) {
+                handleLogin();
             }
+            // print text message if wrong input data
             else {
-                // print text message if empty input fields
-                this.lblAccess.setText("Alle Felder müssen ausgefüllt sein!");
+                this.lblAccess.setText("Anmeldung fehlgeschlagen! Versuchen Sie es erneut.");
             }
         }
     }
@@ -58,9 +46,11 @@ public class LoginController {
         FileWriter usersession = new FileWriter("src/main/usersession.txt");
         usersession.write("usersession1");
         usersession.close();
+        // set button label
+        MainWindowController.Btn.setValue("Abmelden");
     }
 
-    private void handleLogout() throws IOException {
+    protected void handleLogout() throws IOException {
         // delete user session data from file
         FileWriter usersession = new FileWriter("src/main/usersession.txt");
         usersession.write("");
