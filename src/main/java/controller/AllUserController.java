@@ -59,7 +59,7 @@ public class AllUserController {
 
     public void initialize() {
         readAllAndShowInTableView();
-    // TESTING NEW GIT CONFIG
+        // TESTING NEW GIT CONFIG
         this.colID.setCellValueFactory(new PropertyValueFactory<User, Integer>("ID"));
 
         //CellValuefactory zum Anzeigen der Daten in der TableView
