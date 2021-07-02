@@ -18,8 +18,8 @@ public class UserDAO extends DAOimp<User> {
     @Override
     protected String getCreateStatementString(User user)
     {
-        return String.format("INSERT INTO user_list (id, firstname, surname, username, password, role) VALUES ('%s', '%s', '%s', '%s', '%s')",
-         user.getFirstName(),user.getSurname(),user.getUsername(),user.getPassword(),user.getRolename());
+        return String.format("INSERT INTO user_list (id, firstname, surname, username, password, role) VALUES (%d, '%s', '%s', '%s', '%s', '%s')",
+         user.getID(),user.getFirstName(),user.getSurname(),user.getUsername(),user.getPassword(),user.getRolename());
 
     }
     @Override
