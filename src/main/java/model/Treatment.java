@@ -13,10 +13,10 @@ public class Treatment {
     private String description;
     private String caregiver;
     private String remarks;
-    private Integer locked;
+    private int locked;
 
     public Treatment(long pid, LocalDate date, LocalTime begin,
-                     LocalTime end, String description, String caregiver, String remarks) {
+                     LocalTime end, String description, String caregiver, String remarks,int locked) {
         this.pid = pid;
         this.date = date;
         this.begin = begin;
@@ -24,11 +24,11 @@ public class Treatment {
         this.description = description;
         this.remarks = remarks;
         this.caregiver = caregiver;
-        this.locked =0;
+        this.locked = locked;
     }
 
     public Treatment(long tid, long pid, LocalDate date, LocalTime begin,
-                     LocalTime end, String description, String caregiver, String remarks) {
+                     LocalTime end, String description, String caregiver, String remarks,int locked) {
         this.tid = tid;
         this.pid = pid;
         this.date = date;
@@ -37,9 +37,9 @@ public class Treatment {
         this.description = description;
         this.caregiver = caregiver;
         this.remarks = remarks;
-        this.locked =0;
+        this.locked =locked;
     }
-    public Integer getLocked(){return  this.locked;}
+    public int getLocked(){return  this.locked;}
     public void SetLock(){this.locked = 1;}
     public void BreakLock(){this.locked =0;}
 
