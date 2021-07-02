@@ -39,42 +39,81 @@ public class MainWindowController {
 
 
     @FXML
-    private void handleShowAllPatient(ActionEvent e) {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllPatientView.fxml"));
-        try {
-            mainBorderPane.setCenter(loader.load());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        AllPatientController controller = loader.getController();
-    }
-
-    @FXML
-    private void handleShowAllTreatments(ActionEvent e) throws SQLException {
-
+    private void handleShowAllPatient(ActionEvent e) throws SQLException, IOException {
         PermissionHelper perm = new PermissionHelper();
-        int a = perm.checkAccessLevel("ADMIN", "BEHANDLUNGEN", "edit");
-        if(a == 1){
-            System.out.println("Yes");
-        } else { System.out.println("No"); }
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllTreatmentView.fxml"));
-        try {
-            mainBorderPane.setCenter(loader.load());
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        String userrole = LoginController.getUserrole() == null ? "GUEST" : LoginController.getUserrole();
+        int a = perm.checkAccessLevel(userrole, "PATIENTEN", "edit");
+
+        if(a == 1) {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllPatientView.fxml"));
+            try {
+                mainBorderPane.setCenter(loader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            AllPatientController controller = loader.getController();
         }
-        AllTreatmentController controller = loader.getController();
+        else {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/NoAccessView.fxml"));
+            try {
+                mainBorderPane.setCenter(loader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            NoAccessController controller = loader.getController();
+        }
     }
 
     @FXML
-    private void handleShowAllUsers(ActionEvent e) {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllUserView.fxml"));
-        try {
-            mainBorderPane.setCenter(loader.load());
-        } catch (IOException ex) {
-            ex.printStackTrace();
+    private void handleShowAllTreatments(ActionEvent e) throws SQLException, IOException {
+        PermissionHelper perm = new PermissionHelper();
+        String userrole = LoginController.getUserrole() == null ? "GUEST" : LoginController.getUserrole();
+        int a = perm.checkAccessLevel(userrole, "BEHANDLUNGEN", "edit");
+
+        if(a == 1) {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllTreatmentView.fxml"));
+            try {
+                mainBorderPane.setCenter(loader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            AllTreatmentController controller = loader.getController();
         }
-        AllUserController controller = loader.getController();
+        else {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/NoAccessView.fxml"));
+            try {
+                mainBorderPane.setCenter(loader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            NoAccessController controller = loader.getController();
+        }
+    }
+
+    @FXML
+    private void handleShowAllUsers(ActionEvent e) throws SQLException, IOException {
+        PermissionHelper perm = new PermissionHelper();
+        String userrole = LoginController.getUserrole() == null ? "GUEST" : LoginController.getUserrole();
+        int a = perm.checkAccessLevel(userrole, "BENUTZER", "edit");
+
+        if(a == 1) {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllUserView.fxml"));
+            try {
+                mainBorderPane.setCenter(loader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            AllUserController controller = loader.getController();
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/NoAccessView.fxml"));
+            try {
+                mainBorderPane.setCenter(loader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            NoAccessController controller = loader.getController();
+        }
     }
 
     @FXML

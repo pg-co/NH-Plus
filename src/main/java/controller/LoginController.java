@@ -78,4 +78,9 @@ public class LoginController {
         usersession.write("");
         usersession.close();
     }
+
+    public static String getUserrole() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("src/main/usersession.txt"));
+        return br.readLine();
+    }
 }
