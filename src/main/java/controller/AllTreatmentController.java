@@ -37,11 +37,15 @@ public class AllTreatmentController {
     @FXML
     private TableColumn<Treatment, String> colCaregiver;
     @FXML
+    private TableColumn<Treatment,Integer> colLock;
+    @FXML
     private ComboBox<String> comboBox;
     @FXML
     private Button btnNewTreatment;
     @FXML
     private Button btnDelete;
+    @FXML
+    private  Button btnLck;
 
     private ObservableList<Treatment> tableviewContent =
             FXCollections.observableArrayList();

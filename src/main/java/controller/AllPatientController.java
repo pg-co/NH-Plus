@@ -1,5 +1,6 @@
 package controller;
 
+import Services.LockDataService;
 import datastorage.PatientDAO;
 import datastorage.TreatmentDAO;
 import javafx.collections.FXCollections;
@@ -36,11 +37,15 @@ public class AllPatientController {
     private TableColumn<Patient, String> colRoom;
     @FXML
     private TableColumn<Patient, String> colAnwesenheit;
+    @FXML
+    private  TableColumn<Patient,Integer> colLock;
 
     @FXML
     Button btnDelete;
     @FXML
     Button btnAdd;
+    @FXML
+    Button btnLck;
     @FXML
     TextField txtSurname;
     @FXML
@@ -53,6 +58,7 @@ public class AllPatientController {
     TextField txtRoom;
     @FXML
     TextField txtAnwesenheit;
+
 
     private ObservableList<Patient> tableviewContent = FXCollections.observableArrayList();
     private PatientDAO dao;
@@ -84,6 +90,7 @@ public class AllPatientController {
 
         this.colAnwesenheit.setCellValueFactory(new PropertyValueFactory<Patient, String>("anwesenheit"));
         this.colAnwesenheit.setCellFactory(TextFieldTableCell.forTableColumn());
+        this.colLock.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("locked"));
 
 
         //Anzeigen der Daten
@@ -95,9 +102,12 @@ public class AllPatientController {
      * @param event event including the value that a user entered into the cell
      */
     @FXML
-    public void handleOnEditFirstname(TableColumn.CellEditEvent<Patient, String> event){
-        event.getRowValue().setFirstName(event.getNewValue());
-        doUpdate(event);
+    public void handleOnEditFirstname(TableColumn.CellEditEvent<Patient, String> event) throws SQLException {
+
+
+
+            event.getRowValue().setFirstName(event.getNewValue());
+            doUpdate(event);
     }
 
     /**
@@ -146,6 +156,7 @@ public class AllPatientController {
      */
     @FXML
     public void handleOnEditAnwesenheit(TableColumn.CellEditEvent<Patient, String> event){
+
         event.getRowValue().setRoomnumber(event.getNewValue());
         doUpdate(event);
     }
@@ -156,7 +167,10 @@ public class AllPatientController {
      */
     private void doUpdate(TableColumn.CellEditEvent<Patient, String> t) {
         try {
-            dao.update(t.getRowValue());
+            Patient selectedItem = this.tableView.getSelectionModel().getSelectedItem();
+            if( selectedItem.getLocked() == 1) {
+                dao.update(t.getRowValue());
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -183,6 +197,23 @@ public class AllPatientController {
      * handles a delete-click-event. Calls the delete methods in the {@link PatientDAO} and {@link TreatmentDAO}
      */
     @FXML
+    public void handleLock(){
+        Patient selectedItem = this.tableView.getSelectionModel().getSelectedItem();
+        try {
+
+
+            if (selectedItem.getLocked() == 1) {
+                selectedItem.BreakLock();
+            } else {
+                selectedItem.SetLock();
+            }
+            dao.update(selectedItem);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        readAllAndShowInTableView();
+
+    }
     public void handleDeleteRow() {
         TreatmentDAO tDao = DAOFactory.getDAOFactory().createTreatmentDAO();
         Patient selectedItem = this.tableView.getSelectionModel().getSelectedItem();
