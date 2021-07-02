@@ -1,2 +1,19 @@
+<<<<<<< HEAD
 /*C3*/SET SCHEMA PUBLIC
 DISCONNECT
+=======
+/*C2*/SET SCHEMA PUBLIC
+DELETE FROM TREATMENT WHERE TID=1
+INSERT INTO TREATMENT VALUES(1,1,'2020-06-03','11:00','15:00','Gespr\u00e4ch','Der Patient hat enorme Angstgef\u00fchle und glaubt, er sei \u00fcberfallen worden. Ihm seien alle Wertsachen gestohlen worden. \u000aPatient beruhigt sich erst, als alle Wertsachen im Zimmer gefunden worden sind. ','caregiver',1)
+COMMIT
+DELETE FROM TREATMENT WHERE TID=2
+INSERT INTO TREATMENT VALUES(2,1,'2020-06-05','11:00','12:30','Gespr\u00e4ch','Patient irrt auf der Suche nach gestohlenen Wertsachen durch die Etage und bezichtigt andere Bewohner des Diebstahls.\u000aPatient wird in seinen Raum zur\u00fcckbegleitet und erh\u00e4lt Beruhigungsmittel.','caregiver',1)
+COMMIT
+DELETE FROM TREATMENT WHERE TID=3
+INSERT INTO TREATMENT VALUES(3,3,'2020-06-04','07:30','08:00','Waschen','Patient mit Waschlappen gewaschen und frisch angezogen. Patient gewendet.','caregiver',1)
+COMMIT
+DELETE FROM TREATMENT WHERE TID=3
+INSERT INTO TREATMENT VALUES(3,3,'2020-06-04','07:30','08:00','Waschen','Patient mit Waschlappen gewaschen und frisch angezogen. Patient gewendet.','caregiver',0)
+COMMIT
+DISCONNECT
+>>>>>>> 6553d8e (ALL OBJECTS.......)

@@ -1,6 +1,7 @@
 package controller;
 
 import Services.PermissionHelper;
+import Services.LockDataService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableStringValue;
@@ -43,6 +44,9 @@ public class MainWindowController {
         PermissionHelper perm = new PermissionHelper();
         String userrole = LoginController.getUserrole() == null ? "GUEST" : LoginController.getUserrole();
         int a = perm.checkAccessLevel(userrole, "PATIENTEN", "read");
+        LockDataService data = new LockDataService();
+        int test = data.getLockedPatientValue((long)1);
+        System.out.println(test);
 
         if(a == 1) {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllPatientView.fxml"));

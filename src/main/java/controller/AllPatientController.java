@@ -108,6 +108,7 @@ public class AllPatientController {
 
             event.getRowValue().setFirstName(event.getNewValue());
             doUpdate(event);
+
     }
 
     /**
