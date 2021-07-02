@@ -18,13 +18,13 @@ public class UserDAO extends DAOimp<User> {
     @Override
     protected String getCreateStatementString(User user)
     {
-        return String.format("INSERT INTO User (FIRSTNAME, SURNAME, USERNAME, PASSWORD, ROLE) VALUES ('%s', '%s', '%s', '%s', '%s')",
+        return String.format("INSERT INTO USER_LIST (ID, FIRSTNAME, SURNAME, USERNAME, PASSWORD, ROLE) VALUES ('%s', '%s', '%s', '%s', '%s')",
          user.getFirstName(),user.getSurname(),user.getUsername(),user.getPassword(),user.getRolename());
 
     }
     @Override
     protected String getReadByIDStatementString(long key) {
-        return String.format("SELECT * FROM User WHERE ID = %d", key);
+        return String.format("SELECT * FROM USER_LIST WHERE ID = %d", key);
     }
     @Override
     protected User getInstanceFromResultSet(ResultSet result) throws SQLException {
@@ -37,7 +37,7 @@ public class UserDAO extends DAOimp<User> {
     }
     @Override
     protected String getReadAllStatementString() {
-        return "SELECT * FROM USER";
+        return "SELECT * FROM USER_LIST";
     }
     @Override
     protected ArrayList<User> getListFromResultSet(ResultSet result) throws SQLException {
@@ -60,6 +60,6 @@ public class UserDAO extends DAOimp<User> {
     }
     @Override
     protected String getDeleteStatementString(long key) {
-        return String.format("Delete FROM USER WHERE ID=%d", key);
+        return String.format("Delete FROM USER_LIST WHERE ID=%d", key);
     }
 }
