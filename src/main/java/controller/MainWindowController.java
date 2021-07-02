@@ -1,5 +1,6 @@
 package controller;
 
+import Services.PermissionHelper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableStringValue;
@@ -15,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MainWindowController {
 
@@ -48,8 +50,13 @@ public class MainWindowController {
     }
 
     @FXML
-    private void handleShowAllTreatments(ActionEvent e) {
+    private void handleShowAllTreatments(ActionEvent e) throws SQLException {
 
+        PermissionHelper perm = new PermissionHelper();
+        int a = perm.checkAccessLevel("pfleger", "Behandlungen", "edit");
+        if(a == 1){
+            System.out.println("Yes");
+        } else { System.out.println("No"); }
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllTreatmentView.fxml"));
         try {
             mainBorderPane.setCenter(loader.load());
