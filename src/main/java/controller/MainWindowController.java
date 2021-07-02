@@ -49,6 +49,7 @@ public class MainWindowController {
 
     @FXML
     private void handleShowAllTreatments(ActionEvent e) {
+
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllTreatmentView.fxml"));
         try {
             mainBorderPane.setCenter(loader.load());
