@@ -44,12 +44,6 @@ public class UserDAO extends DAOimp<User> {
         ArrayList<User> list = new ArrayList<User>();
         User u = null;
         while (result.next()) {
-            System.out.println(result.getInt(1));
-            System.out.println(result.getString(2));
-            System.out.println(result.getString(3));
-            System.out.println(result.getString(4));
-            System.out.println(result.getString(5));
-            System.out.println(result.getString(6));
             u = new User(result.getInt(1), result.getString(2),
                     result.getString(3), result.getString(4),
                     result.getString(5),result.getString(6));
