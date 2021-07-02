@@ -23,5 +23,13 @@ public class User extends Person {
     public String getRolename() {
         return Rolename;
     }
+    public void SetUsername(String Username){this.Username = Username;}
+    public void SetPassword(String Password){this.Password = Password;}
+    public void SetRole(String Role){this.Username = Role;}
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     public Integer getID(){return ID;}
 }

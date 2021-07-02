@@ -85,6 +85,42 @@ public class AllUserController {
         //Anzeigen der Daten
         this.tableView.setItems(this.tableviewContent);
     }
+    @FXML
+    public void handleOnEditFirstname(TableColumn.CellEditEvent<User, String> event){
+        event.getRowValue().setFirstName(event.getNewValue());
+        doUpdate(event);
+    }
+
+    /**
+     * handles new surname value
+     * @param event event including the value that a user entered into the cell
+     */
+    @FXML
+    public void handleOnEditSurname(TableColumn.CellEditEvent<User, String> event){
+        event.getRowValue().setSurname(event.getNewValue());
+        doUpdate(event);
+    }
+
+    /**
+     * handles new birthdate value
+     * @param event event including the value that a user entered into the cell
+     */
+
+    @FXML
+    public void handleOnUsername(TableColumn.CellEditEvent<User, String> event){
+        event.getRowValue().SetUsername(event.getNewValue());
+        doUpdate(event);
+    }
+
+    /**
+     * handles new roomnumber value
+     * @param event event including the value that a user entered into the cell
+     */
+    @FXML
+    public void handleOnEditRole(TableColumn.CellEditEvent<User, String> event){
+        event.getRowValue().SetRole(event.getNewValue());
+        doUpdate(event);
+    }
     public void handleDeleteRow() {
         UserDAO uDao = DAOFactory.getDAOFactory().createUserDAO();
         User selectedItem = this.tableView.getSelectionModel().getSelectedItem();
