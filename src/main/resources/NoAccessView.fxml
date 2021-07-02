@@ -17,7 +17,7 @@
         </HBox>
         <GridPane hgap="10.0" layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" minWidth="400.0" text="Sie haben nicht die notwendigen Zugriffsrechte für diese Seite." textAlignment="CENTER">
+                <Label fx:id="txtAccess" alignment="CENTER" contentDisplay="CENTER" minWidth="400.0" textAlignment="CENTER">
                     <font>
                         <Font size="20.0" />
                     </font>

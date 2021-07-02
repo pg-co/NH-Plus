@@ -42,7 +42,7 @@ public class MainWindowController {
     private void handleShowAllPatient(ActionEvent e) throws SQLException, IOException {
         PermissionHelper perm = new PermissionHelper();
         String userrole = LoginController.getUserrole() == null ? "GUEST" : LoginController.getUserrole();
-        int a = perm.checkAccessLevel(userrole, "PATIENTEN", "edit");
+        int a = perm.checkAccessLevel(userrole, "PATIENTEN", "read");
 
         if(a == 1) {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllPatientView.fxml"));
@@ -68,7 +68,7 @@ public class MainWindowController {
     private void handleShowAllTreatments(ActionEvent e) throws SQLException, IOException {
         PermissionHelper perm = new PermissionHelper();
         String userrole = LoginController.getUserrole() == null ? "GUEST" : LoginController.getUserrole();
-        int a = perm.checkAccessLevel(userrole, "BEHANDLUNGEN", "edit");
+        int a = perm.checkAccessLevel(userrole, "BEHANDLUNGEN", "read");
 
         if(a == 1) {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllTreatmentView.fxml"));
@@ -94,7 +94,7 @@ public class MainWindowController {
     private void handleShowAllUsers(ActionEvent e) throws SQLException, IOException {
         PermissionHelper perm = new PermissionHelper();
         String userrole = LoginController.getUserrole() == null ? "GUEST" : LoginController.getUserrole();
-        int a = perm.checkAccessLevel(userrole, "BENUTZER", "edit");
+        int a = perm.checkAccessLevel(userrole, "BENUTZER", "read");
 
         if(a == 1) {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllUserView.fxml"));
