@@ -14,6 +14,7 @@ public class Patient extends Person {
     private String careLevel;
     private String roomnumber;
     private String anwesenheit;
+    private int locked;
     private List<Treatment> allTreatments = new ArrayList<Treatment>();
 
     /**
@@ -30,6 +31,7 @@ public class Patient extends Person {
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
         this.anwesenheit = anwesenheit;
+        this.locked = 0;
     }
 
     /**
@@ -42,13 +44,14 @@ public class Patient extends Person {
      * @param roomnumber
      * @param anwesenheit
      */
-    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String anwesenheit) {
+    public Patient(long pid, String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, String anwesenheit,int locked) {
         super(firstName, surname);
         this.pid = pid;
         this.dateOfBirth = dateOfBirth;
         this.careLevel = careLevel;
         this.roomnumber = roomnumber;
         this.anwesenheit = anwesenheit;
+        this.locked = locked;
     }
 
     /**
@@ -75,6 +78,9 @@ public class Patient extends Person {
         LocalDate birthday = DateConverter.convertStringToLocalDate(dateOfBirth);
         this.dateOfBirth = birthday;
     }
+    public int getLocked(){return  this.locked;}
+    public void SetLock(){this.locked = 1;}
+    public void BreakLock(){this.locked =0;}
 
     /**
      *

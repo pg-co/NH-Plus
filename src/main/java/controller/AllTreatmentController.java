@@ -37,11 +37,15 @@ public class AllTreatmentController {
     @FXML
     private TableColumn<Treatment, String> colCaregiver;
     @FXML
+    private TableColumn<Treatment,Integer> colLock;
+    @FXML
     private ComboBox<String> comboBox;
     @FXML
     private Button btnNewTreatment;
     @FXML
     private Button btnDelete;
+    @FXML
+    private  Button btnLck;
 
     private ObservableList<Treatment> tableviewContent =
             FXCollections.observableArrayList();
@@ -65,6 +69,7 @@ public class AllTreatmentController {
         this.colDescription.setCellValueFactory(new PropertyValueFactory<Treatment, String>("description"));
         this.colCaregiver.setCellValueFactory(new PropertyValueFactory<Treatment, String>("caregiver"));
         this.tableView.setItems(this.tableviewContent);
+        this.colLock.setCellValueFactory(new PropertyValueFactory<Treatment, Integer>("locked"));
         createComboBoxData();
     }
 
@@ -96,6 +101,24 @@ public class AllTreatmentController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void handleLock(){
+        Treatment selectedItem = this.tableView.getSelectionModel().getSelectedItem();
+        try {
+
+
+            if (selectedItem.getLocked() == 1) {
+                selectedItem.BreakLock();
+            } else {
+                selectedItem.SetLock();
+            }
+            dao.update(selectedItem);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        readAllAndShowInTableView("LOL");
+
     }
 
     private void createComboBoxData(){
