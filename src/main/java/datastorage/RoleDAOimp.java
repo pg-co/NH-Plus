@@ -14,7 +14,9 @@ public abstract class RoleDAOimp<T> implements RoleDAO<T> {
     public T readRole(String role, String obj) throws SQLException {
         T object = null;
         Statement st = conn.createStatement();
-        ResultSet result = st.executeQuery(getReadByIDStatementString(role, obj));
+        String test = getReadByIDStatementString(role, obj);
+        System.out.println(test);
+        ResultSet result = st.executeQuery(test);
         if (result.next()) {
             object = getInstanceFromResultSet(result);
         }

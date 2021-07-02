@@ -14,7 +14,7 @@ public class UserRolesDAO extends RoleDAOimp<UserRole> {
 
     @Override
     protected String getReadByIDStatementString(String role, String obj) throws SQLException {
-        return String.format("SELECT * FROM user_roles WHERE role_name = %s AND object_name = %s", role, obj);
+        return "SELECT * FROM user_roles WHERE role_name = '"+role+"' AND object_name = '"+obj+"'";
     }
 
     @Override

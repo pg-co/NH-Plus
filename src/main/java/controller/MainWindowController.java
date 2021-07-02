@@ -53,7 +53,7 @@ public class MainWindowController {
     private void handleShowAllTreatments(ActionEvent e) throws SQLException {
 
         PermissionHelper perm = new PermissionHelper();
-        int a = perm.checkAccessLevel("pfleger", "Behandlungen", "edit");
+        int a = perm.checkAccessLevel("ADMIN", "BEHANDLUNGEN", "edit");
         if(a == 1){
             System.out.println("Yes");
         } else { System.out.println("No"); }
