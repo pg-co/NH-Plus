@@ -73,7 +73,7 @@ public class TreatmentController {
         this.treatment.setCaregiver(txtCaregiver.getText());
         this.treatment.setRemarks(taRemarks.getText());
         doUpdate();
-        controller.readAllAndShowInTableView();
+        controller.readAllAndShowInTableView("update");
         stage.close();
     }
 
