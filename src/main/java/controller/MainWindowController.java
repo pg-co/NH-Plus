@@ -122,7 +122,16 @@ public class MainWindowController {
         // check what button label is set
         if(this.lblBtn.getText().equals("Abmelden")){
             lc.handleLogout();
-            // set button label
+            // redirect to no access View
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/NoAccessView.fxml"));
+            try {
+                mainBorderPane.setCenter(loader.load());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            NoAccessController controller = loader.getController();
+
+            // reset button label
             Btn.setValue("Anmelden");
         }
         else {
