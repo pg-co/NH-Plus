@@ -54,4 +54,15 @@ public class MainWindowController {
         }
         LoginController controller = loader.getController();
     }
+
+    @FXML
+    private void handleShowLogout(ActionEvent e) {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/LoginView.fxml"));
+        try {
+            mainBorderPane.setCenter(loader.load());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        LoginController controller = loader.getController();
+    }
 }
