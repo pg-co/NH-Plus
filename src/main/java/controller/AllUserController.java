@@ -33,10 +33,8 @@ public class AllUserController {
     @FXML
     private TableColumn<User, String> colUsername;
     @FXML
-    private  TableColumn<User,String> colPassword;
-    @FXML
     private TableColumn<User, String> colRole;
-
+    @FXML
     Button btnDelete;
     @FXML
     Button btnAdd;
@@ -74,8 +72,6 @@ public class AllUserController {
         this.colUsername.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         this.colUsername.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colPassword.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
-        this.colPassword.setCellFactory(TextFieldTableCell.forTableColumn());
 
         this.colRole.setCellValueFactory(new PropertyValueFactory<User, String>("rolename"));
         this.colRole.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -143,8 +139,8 @@ public class AllUserController {
         String surname = this.txtSurname.getText();
         String firstname = this.txtFirstname.getText();
         String username = this.txtUsername.getText();
-        String password = this.colPassword.getText();
-        String role= this.colRole.getText();
+        String password = this.txtPassword.getText();
+        String role= this.txtRole.getText();
         String id = this.txtID.getText();
         try {
             User u = new User( Integer.parseInt(id),firstname, surname, username, password, role);
