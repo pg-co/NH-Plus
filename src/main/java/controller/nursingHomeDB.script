@@ -64,4 +64,4 @@ INSERT INTO TREATMENT VALUES(8,1,'2020-06-08','15:00','16:00','Spaziergang','Par
 INSERT INTO TREATMENT VALUES(9,3,'2020-06-07','11:00','11:30','Waschen','Waschen per Dusche auf einem Stuhl; Patientin gewendet;', 'test', 'caregiver')
 INSERT INTO TREATMENT VALUES(12,11,'2020-06-08','15:00','15:30','Physiotherapie','\u00dcbungen zur Stabilisation und Mobilisierung der R\u00fcckenmuskulatur', 'test', 'caregiver')
 INSERT INTO TREATMENT VALUES(24,11,'2020-11-30','19:00','20:00','Test','Test', 'test', 'caregiver')
-
+INSERT INTO USER_LIST VALUES(10000,'Peter','Schmitt','Snob','SNOBBY','KING')

@@ -18,13 +18,13 @@ public class UserDAO extends DAOimp<User> {
     @Override
     protected String getCreateStatementString(User user)
     {
-        return String.format("INSERT INTO USER_LIST (ID, FIRSTNAME, SURNAME, USERNAME, PASSWORD, ROLE) VALUES ('%s', '%s', '%s', '%s', '%s')",
+        return String.format("INSERT INTO user_list (id, firstname, surname, username, password, role) VALUES ('%s', '%s', '%s', '%s', '%s')",
          user.getFirstName(),user.getSurname(),user.getUsername(),user.getPassword(),user.getRolename());
 
     }
     @Override
     protected String getReadByIDStatementString(long key) {
-        return String.format("SELECT * FROM USER_LIST WHERE ID = %d", key);
+        return String.format("SELECT * FROM user_list WHERE id = %d", key);
     }
     @Override
     protected User getInstanceFromResultSet(ResultSet result) throws SQLException {
@@ -37,14 +37,18 @@ public class UserDAO extends DAOimp<User> {
     }
     @Override
     protected String getReadAllStatementString() {
-        return "SELECT * FROM USER_LIST";
+        return "SELECT * FROM user_list";
     }
     @Override
     protected ArrayList<User> getListFromResultSet(ResultSet result) throws SQLException {
         ArrayList<User> list = new ArrayList<User>();
         User u = null;
         while (result.next()) {
-            LocalDate date = DateConverter.convertStringToLocalDate(result.getString(4));
+            System.out.println(result.getInt(1));
+            System.out.println(result.getString(2));
+            System.out.println(result.getString(3));
+            System.out.println(result.getString(4));
+            System.out.println(result.getString(5));
             u = new User(result.getInt(1), result.getString(2),
                     result.getString(3), result.getString(4),
                     result.getString(5),result.getString(6));
@@ -54,12 +58,12 @@ public class UserDAO extends DAOimp<User> {
     }
     @Override
     protected String getUpdateStatementString(User user) {
-        return String.format("UPDATE USER SET FIRSTNAME = '%s', SURNAME = '%s', USERNAME = '%s', PASSWORD = '%s', " +
-                        "ROLE = '%s' WHERE ID = %d", user.getFirstName(), user.getSurname(), user.getUsername(),
+        return String.format("UPDATE user_list SET firstname = '%s', surname = '%s', username = '%s', password = '%s', " +
+                        "ROLE = '%s' WHERE id= %d", user.getFirstName(), user.getSurname(), user.getUsername(),
                 user.getPassword(), user.getRolename(), user.getID());
     }
     @Override
     protected String getDeleteStatementString(long key) {
-        return String.format("Delete FROM USER_LIST WHERE ID=%d", key);
+        return String.format("Delete FROM user_list WHERE id=%d", key);
     }
 }
