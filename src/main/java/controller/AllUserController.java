@@ -65,20 +65,19 @@ public class AllUserController {
         this.colID.setCellValueFactory(new PropertyValueFactory<User, Integer>("ID"));
 
         //CellValuefactory zum Anzeigen der Daten in der TableView
-        this.colFirstName.setCellValueFactory(new PropertyValueFactory<User, String>("FIRSTNAME"));
-        //CellFactory zum Schreiben innerhalb der Tabelle
+        this.colFirstName.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
         this.colFirstName.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colSurname.setCellValueFactory(new PropertyValueFactory<User, String>("SURNAME"));
+        this.colSurname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         this.colSurname.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colUsername.setCellValueFactory(new PropertyValueFactory<User, String>("USERNAME"));
+        this.colUsername.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         this.colUsername.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colPassword.setCellValueFactory(new PropertyValueFactory<User, String>("PASSWORD"));
+        this.colPassword.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
         this.colPassword.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        this.colRole.setCellValueFactory(new PropertyValueFactory<User, String>("ROLE"));
+        this.colRole.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
         this.colRole.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
